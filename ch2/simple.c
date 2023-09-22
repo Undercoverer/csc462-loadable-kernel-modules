@@ -22,7 +22,7 @@ int simple_init(void)
 {
        printk(KERN_INFO "Loading Module\n");
        printk(KERN_INFO "Golden Ratio Prime: %llu\n", GOLDEN_RATIO_PRIME);
-       printk(KERN_INFO "HZ: %lu\n", HZ);
+       printk(KERN_INFO "HZ: %u\n", HZ);
        printk(KERN_INFO "Jiffies: %lu\n", jiffies);
 
     return 0;
