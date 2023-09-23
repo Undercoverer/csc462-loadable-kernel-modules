@@ -15,10 +15,12 @@
 #include <linux/kernel.h>
 #include <linux/proc_fs.h>
 #include <asm/uaccess.h>
+#include <linux/jiffies.h>
+#include <linux/param.h>
 
 #define BUFFER_SIZE 128
 
-#define PROC_NAME "hello"
+#define PROC_NAME "seconds"
 #define MESSAGE "Hello World\n"
 
 /**
@@ -26,10 +28,11 @@
  */
 ssize_t proc_read(struct file *file, char *buf, size_t count, loff_t *pos);
 
+static unsigned long start_jiffies;
+
 static struct proc_ops module_fops = {
         .proc_read = proc_read,
 };
-
 
 /* This function is called when the module is loaded. */
 int proc_init(void)
@@ -39,7 +42,7 @@ int proc_init(void)
         // the following function call is a wrapper for
         // proc_create_data() passing NULL as the last argument
         proc_create(PROC_NAME, 0, NULL, &module_fops);
-
+        start_jiffies = jiffies;
         printk(KERN_INFO "/proc/%s created\n", PROC_NAME);
 
 	return 0;
@@ -82,7 +85,7 @@ ssize_t proc_read(struct file *file, char __user *usr_buf, size_t count, loff_t 
 
         completed = 1;
 
-        rv = sprintf(buffer, "Hello World\n");
+        rv = sprintf(buffer, "Seconds: %ld\n", (jiffies-start_jiffies)/HZ);
 
         // copies the contents of buffer to userspace usr_buf
         copy_to_user(usr_buf, buffer, rv);
@@ -96,6 +99,6 @@ module_init( proc_init );
 module_exit( proc_exit );
 
 MODULE_LICENSE("GPL");
-MODULE_DESCRIPTION("Hello Module");
+MODULE_DESCRIPTION("Seconds Module");
 MODULE_AUTHOR("SGG");
 
