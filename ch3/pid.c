@@ -75,8 +75,8 @@ static ssize_t proc_read(struct file *file, char __user *usr_buf, size_t count, 
         return 0;
     }
 
-    snprintf(buffer, BUFFER_SIZE, "command = [%s] pid = [%d] state = [%du]\n", tsk->comm, tsk->pid, tsk->__state);
-
+    rv = snprintf(buffer, BUFFER_SIZE, "command = [%s] pid = [%d] state = [%du]\n", tsk->comm, tsk->pid, tsk->__state);
+    printk(KERN_INFO "%s read from /proc/%s", buffer, PROC_NAME);
     completed = 1;
 
     // copies the contents of kernel buffer to userspace usr_buf
@@ -111,7 +111,8 @@ static ssize_t proc_write(struct file *file, const char __user *usr_buf, size_t 
 
     // I'll trust you magic code man
     sscanf(k_mem, "%d", &current_pid);
-    
+    printk(KERN_INFO "%d inserted into /proc/%s", current_pid, PROC_NAME);
+
     kfree(k_mem);
 
     return count;
