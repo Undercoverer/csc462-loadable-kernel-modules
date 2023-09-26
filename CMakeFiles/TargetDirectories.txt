@@ -1,3 +1,0 @@
-/home/foxkj/Documents/github-repos/csc462-loadable-kernel-modules/CMakeFiles/dummy.dir
-/home/foxkj/Documents/github-repos/csc462-loadable-kernel-modules/CMakeFiles/edit_cache.dir
-/home/foxkj/Documents/github-repos/csc462-loadable-kernel-modules/CMakeFiles/rebuild_cache.dir

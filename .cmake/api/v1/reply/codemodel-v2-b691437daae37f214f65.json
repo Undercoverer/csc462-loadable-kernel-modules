@@ -15,7 +15,9 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1,
+						2
 					]
 				}
 			],
@@ -30,7 +32,9 @@
 					"name" : "Linux Kernel Module with CLion IDE support / CMake",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1,
+						2
 					]
 				}
 			],
@@ -38,8 +42,22 @@
 			[
 				{
 					"directoryIndex" : 0,
+					"id" : "build_target::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-build_target-265ec65d6d7fcbbc5ab8.json",
+					"name" : "build_target",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "clean_target::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-clean_target-8abe9f0c6443f2735abe.json",
+					"name" : "clean_target",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
 					"id" : "dummy::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-dummy-91ea4c414e8215aa3be9.json",
+					"jsonFile" : "target-dummy-253ce7f99fb98cffac51.json",
 					"name" : "dummy",
 					"projectIndex" : 0
 				}
